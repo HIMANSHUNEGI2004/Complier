@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C/C++ Static Analyzer</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>CODESHIELD: Smart Analysis</h1>
+        <div class="editor-container">
+            <div class="editor-header">
+                <select class="tab active" id="language-select">
+  <option value="c" selected>C</option>
+  <option value="python">Python</option>
+</select>
+                
+                <button id="analyze-btn">Analyze Code</button>
+            </div>
+            <textarea id="editor">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    // Example code with potential issues
+    char *buffer = malloc(100);
+    strcpy(buffer, "Hello");
+    printf("%s\n", buffer);
+    
+    if (buffer = NULL) {
+        printf("Buffer is null\n");
+    }
+    
+    int unused_var;
+    
+    return 0;
+}</textarea>
+        </div>
+        <div class="issues-container">
+            <div class="issues-header">
+                <h2>Analysis Results</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-type="all">All</button>
+                    <button class="filter-btn" data-type="error">Errors</button>
+                    <button class="filter-btn" data-type="warning">Warnings</button>
+                </div>
+            </div>
+            <div id="issues-list"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

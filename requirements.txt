@@ -1,0 +1,4 @@
+flask>=2.0.0
+pycparser>=2.21
+ply>=3.11
+waitress>=2.0.0
